@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <iostream>
 
 int main(int argc, char const *argv[]) {
   sf::RenderWindow window(sf::VideoMode(800,600), "SFML App");
 
   sf::CircleShape shape;
+
   shape.setRadius(20.0f);
   shape.setPosition(100.0f, 100.0f);
   shape.setFillColor(sf::Color::Blue);
@@ -17,32 +19,35 @@ int main(int argc, char const *argv[]) {
       }
 
       if(event.type == sf::Event::KeyPressed) {
+        sf::Vector2f movement;
         std::cout << "key pressed: ";
-        if (event.key.code == sf::Keyboard::Left) {
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
           std::cout << "left";
-          shape.move(-5.0f, 0.0f);
+          movement.x -= 5.f;
         }
 
-        if (event.key.code == sf::Keyboard::Right) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
           std::cout << "right";
-          shape.move(5.0f, 0.0f);
+          movement.x += 5.f;
         }
 
-        if (event.key.code == sf::Keyboard::Up) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
           std::cout << "up";
-          shape.move(0.0f, -5.0f);
+          movement.y -= 5.f;
         }
 
-        if (event.key.code == sf::Keyboard::Down) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
           std::cout << "down";
-          shape.move(0.0f, 5.0f);
+          movement.y += 5.f;
         }
 
-        if(event.key.code == sf::Keyboard::Escape) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
           window.close();
         }
 
         std::cout << std::endl;
+        shape.move(movement);
       }
     }
 
