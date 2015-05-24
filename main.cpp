@@ -17,7 +17,28 @@ int main(int argc, char const *argv[]) {
       }
 
       if(event.type == sf::Event::KeyPressed) {
-        std::cout << "key pressed: " << event.key.code << std::endl;
+        std::cout << "key pressed: ";
+        if (event.key.code == sf::Keyboard::Left) {
+          std::cout << "left";
+        }
+
+        if (event.key.code == sf::Keyboard::Right) {
+          std::cout << "right";
+        }
+
+        if (event.key.code == sf::Keyboard::Up) {
+          std::cout << "up";
+        }
+
+        if (event.key.code == sf::Keyboard::Down) {
+          std::cout << "down";
+        }
+
+        if(event.key.code == sf::Keyboard::Escape) {
+          window.close();
+        }
+
+        std::cout << std::endl;
       }
     }
 
