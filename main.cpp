@@ -20,18 +20,22 @@ int main(int argc, char const *argv[]) {
         std::cout << "key pressed: ";
         if (event.key.code == sf::Keyboard::Left) {
           std::cout << "left";
+          shape.move(-5.0f, 0.0f);
         }
 
         if (event.key.code == sf::Keyboard::Right) {
           std::cout << "right";
+          shape.move(5.0f, 0.0f);
         }
 
         if (event.key.code == sf::Keyboard::Up) {
           std::cout << "up";
+          shape.move(0.0f, -5.0f);
         }
 
         if (event.key.code == sf::Keyboard::Down) {
           std::cout << "down";
+          shape.move(0.0f, 5.0f);
         }
 
         if(event.key.code == sf::Keyboard::Escape) {
